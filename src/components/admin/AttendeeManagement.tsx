@@ -731,14 +731,11 @@ export default function AttendeeManagement() {
                     <div className="flex items-center space-x-3">
                      <div className="flex-shrink-0">
                        <img
-                         src={attendee.photo && !attendee.photo.includes('pexels.com') && !attendee.photo.includes('/Apax_Favicon_32x32-1.png')
-                           ? attendee.photo 
-                           : '/Apax_Favicon_32x32-1 copy.png'
-                         }
+                         src={attendee.photo || '/Apax_Favicon_32x32 copy.png'}
                          alt={`${attendee.firstName} ${attendee.lastName}`}
                          className="w-10 h-10 rounded-full object-cover border-2 border-gray-200"
                          onError={(e) => {
-                           e.currentTarget.src = '/Apax_Favicon_32x32-1 copy.png'
+                           e.currentTarget.src = '/Apax_Favicon_32x32 copy.png'
                          }}
                        />
                      </div>
