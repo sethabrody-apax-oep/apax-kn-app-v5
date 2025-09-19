@@ -138,13 +138,6 @@ export default function SupabaseAdminLogin({ onLogin }: SupabaseAdminLoginProps)
     <div className="min-h-screen flex items-center justify-center px-4 bg-gray-50">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
-          <div className="flex justify-center mb-6">
-            <img 
-              src="/Apax logos_RGB_Apax_RGB.png" 
-              alt="Apax Partners" 
-              className="h-12 w-auto"
-            />
-          </div>
           <h1 className="text-3xl font-bold text-brand-navy mb-2">
             KnowledgeNow Event Administration
           </h1>
