@@ -418,6 +418,25 @@ export function transformAttendeeData(supabaseAttendee: any) {
     dietary_requirements_length: supabaseAttendee.dietary_requirements?.length
   })
 
+  // Handle photo URL - replace specific Pexels URL with Apax favicon
+  const getPhotoUrl = (photoUrl: string | null) => {
+    const defaultApaxFavicon = '/Apax_Favicon_32x32 copy.png'
+    const pexelsUrlToReplace = 'https://images.pexels.com/photos/3785077/pexels-photo-3785077.jpeg?auto=compress&cs=tinysrgb&w=400'
+    
+    // If no photo URL or empty, use default
+    if (!photoUrl || photoUrl.trim() === '') {
+      return defaultApaxFavicon
+    }
+    
+    // If it's the specific Pexels URL we want to replace, use default
+    if (photoUrl === pexelsUrlToReplace) {
+      return defaultApaxFavicon
+    }
+    
+    // Otherwise use the provided photo URL (including Supabase storage URLs)
+    return photoUrl
+  }
+
   return {
     id: supabaseAttendee.id,
     salutation: supabaseAttendee.salutation || '',
@@ -428,7 +447,7 @@ export function transformAttendeeData(supabaseAttendee: any) {
     company: supabaseAttendee.company || '',
     company_name_standardized: supabaseAttendee.company_name_standardized || supabaseAttendee.company || '',
     bio: supabaseAttendee.bio || '',
-    photo: supabaseAttendee.photo || '/Apax_Favicon_32x32-1 copy.png',
+    photo: getPhotoUrl(supabaseAttendee.photo),
     businessPhone: supabaseAttendee.business_phone || '',
     mobilePhone: supabaseAttendee.mobile_phone || '',
     dietaryRequirements: supabaseAttendee.dietary_requirements || '',
